@@ -9,7 +9,7 @@ type ClientExpect interface {
 	Expect()
 }
 
-// ClientUserRequestFunc 最终面向用户的接口
+// ClientUserRequest 最终面向用户的接口
 type ClientUserRequest struct {
 	adapter *ClientRequestAdapter
 }
@@ -18,18 +18,18 @@ func (req *ClientUserRequest) Request() {
 	req.adapter.Expect()
 }
 
-// 已经存在的接口
+// WhatWeHave 已经存在的接口
 type WhatWeHave struct{}
 
 func (w *WhatWeHave) ExistsExpect() {
 	log.Println("System Have ExistsExpect")
 }
 
-// 适配器
+// ClientRequestAdapter 适配器
 type ClientRequestAdapter struct {
-	whatWeHave *WhatWeHave
+	whatWeHave ClientExpect
 }
 
 func (adp *ClientRequestAdapter) Expect() {
-	adp.whatWeHave.ExistsExpect()
+	adp.whatWeHave.Expect()
 }
