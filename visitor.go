@@ -2,6 +2,7 @@ package design
 
 import "fmt"
 
+// https://stackoverflow.com/questions/2604169/visitor-patterns-purpose-with-examples
 // Visitor visitor
 type Visitor interface {
 	VisitElementA(e *ElementA)
