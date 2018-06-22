@@ -52,6 +52,7 @@ func AuthReqInterceptor(req interface{}, handler ReqHandler) error {
 
 func TimingReqInterceptor(req interface{}, handler ReqHandler) error {
 	start := time.Now()
+	log.Println("Timing Interceptor")
 	defer func() {
 		end := time.Now()
 		log.Printf("Total Cosuming %fs\n", end.Sub(start).Seconds())
